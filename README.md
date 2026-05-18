@@ -66,14 +66,29 @@ cd upcurrent
 npm install
 ```
 
+### Smart Contract Development
+
+Build the Soroban smart contracts:
+
+```bash
+cd contracts
+make install-deps  # First time only
+make build
+make test
+```
+
 Generate local smart contract interfaces using the Soroban compiler:
 
 ```bash
-# Pull contract bindings into the frontend package directory
-stellar contract bindings typescript \
-  --wasm ./target/wasm32-unknown-unknown/release/upcurrent_escrow.wasm \
-  --output-dir ./src/contracts/upcurrent
+# From the contracts directory
+make bindings
 ```
+
+This will generate TypeScript bindings at `./src/contracts/upcurrent/`
+
+For detailed contract development instructions, see [contracts/README.md](./contracts/README.md) and [contracts/QUICKSTART.md](./contracts/QUICKSTART.md).
+
+### Frontend Development
 
 Spin up the localized developer instance:
 
